@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "node"
+env:
+  global:
+    - secure: "PHmRAF8vFNj9pdQdg3+UcFtCXNtqzlo8LzSkQkIkuL3aRbEb7FJgLETnjWHDqRZFFBDbUha3edt7mZLrsHdzRVsBT+bqfmzsLPonswSCiwh26vHa/rht5b/tdqfVc8L72wUdqLUU3d81TvsrIb9Cc+sRTMPoyJJUA1RiYmOtF4vyZWRASisRbqktbViftB5+PuJi/48ftOVQSdh+SvQSgL0XUlijmmnBzlL9O7QwBkJlBwwkXlVzSKMw0K7seqcq/MYzFU7oa5KhrLx2EiYrxxU6Be9vRkpQjlZNBTk0FHVzxZVVt/caAvPo9yD7Mv6Hucz5Sp/bqqS7T9389J0MLi6MPbhVyQM09SuqvAmrvm1uTO+xrV8nhBWA2Up1RTpcc20mNN8XVqaWVMlQ2j5JZO8c42lbZtdBOyUF25LYO3VMevNXl/fePA+GJf5V7KW2aSMwnSKtLH0G8er3Ii0Bm3NoSbDGFDZm/wjh64c7bjfrRW9hYojHdXG/ZoqYtMMxetLXXXIw+ph/rz635YKDTeHZjJn7DsKVi1YE8rL9mMrzezgnSevOkCW6I931jZaXKAqT14fingBAQDpGHIAw/GPCOvTHeD6VN5EsEpwEkKynsbzAixG1xbC0qzBENjfXRvNbIA0heWOg0eE3Jwda2PWGqsavc5GD106Q5bSG0RM="
+before_script:
+  - npm install hexo-cli -g
+  - git config --global user.email "houxg09@foxmail.com"
+  - git config --global user.name "Houxg"
+
+script:
+  - echo $GITHUB_LINK
+  - git clone $GITHUB_LINK public
+  - cd public
+  - rm -f -r *
+  - git add -A .
+  - cd ..
+  - hexo g
+  - cd public
+  - git add -A .
+  - git commit -m "Site update at"$TRAVIS_STACK_TIMESTAMP
+  - git push -f "${GITHUB_LINK}" master:master
