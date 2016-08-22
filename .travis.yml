@@ -19,5 +19,5 @@ script:
   - hexo g
   - cd public
   - git add -A .
-  - git commit -m "Site update at"$TRAVIS_STACK_TIMESTAMP
+  - git commit -m "Site update"
   - git push -f "${GITHUB_LINK}" master:master
