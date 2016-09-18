@@ -71,6 +71,7 @@ PowerMockito.doAnswer(new Answer<Long>() {
                 return arg + "aa";
             }
         }).when(AES.class);
+AES.encrypt(anyString());
 ```
 ### Test环境屏蔽加载native library
 一般我们会在static代码块加载native library，那么屏蔽掉static 代码块就好了:)
