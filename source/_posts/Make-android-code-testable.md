@@ -59,7 +59,7 @@ class AES {
 ```
 ### mock原方法，不执行原方法体内代码，直接返回指定值
 ```
- doReturn("aa").when(AES.encrypt(anyString()));   //对所有调用AES.encrypt()均返回"aa"
+ doReturn("encrypted").when(AES.class, "encrypt", anyString());   //对所有调用AES.encrypt()均返回"aa"
 ```
 ### mock原方法，对输入参数进行处理，然后传出(PowerMockito)
 这里比较特殊，在声明完之后，还要紧接着调用一下原方法
